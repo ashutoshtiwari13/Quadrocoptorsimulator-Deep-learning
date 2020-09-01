@@ -1,6 +1,6 @@
 import os
 import json
-from tensorflow.contrib.keras.python import keras 
+from tensorflow.contrib.keras.python import keras
 from scipy import misc
 from . import data_iterator
 import numpy as np
@@ -13,30 +13,30 @@ def make_dir_if_not_exist(path):
 
 def save_network(your_model, your_weight_filename):
     config_name = 'config' + '_' + your_weight_filename
-    weight_path = os.path.join('..', 'data', 'weights', your_weight_filename)
-    config_path = os.path.join('..', 'data', 'weights', config_name)
+    weight_path = os.path.join('data', 'weights', your_weight_filename)
+    config_path = os.path.join('data', 'weights', config_name)
     your_model_json = your_model.to_json()
-    
+
     with open(config_path, 'w') as file:
-        json.dump(your_model_json, file)  
-        
-    your_model.save_weights(weight_path) 
-        
-        
+        json.dump(your_model_json, file)
+
+    your_model.save_weights(weight_path)
+
+
 def load_network(your_weight_filename):
     config_name = 'config' + '_' + your_weight_filename
-    weight_path = os.path.join('..', 'data', 'weights', your_weight_filename)
-    config_path = os.path.join('..', 'data', 'weights', config_name)
-    
+    weight_path = os.path.join('data', 'weights', your_weight_filename)
+    config_path = os.path.join('data', 'weights', config_name)
+
     if os.path.exists(config_path):
         with open(config_path, 'r') as file:
-            json_string = json.load(file)  
-            
+            json_string = json.load(file)
+
         your_model = keras.models.model_from_json(json_string)
-        
+
     else:
         raise ValueError('No config_yourmodel file found at {}'.format(config_path))
-        
+
     if os.path.exists(weight_path):
         your_model.load_weights(weight_path)
         return your_model
@@ -45,10 +45,10 @@ def load_network(your_weight_filename):
 
 
 def write_predictions_grade_set(model, out_folder_suffix,subset_name, grading_dir_name):
-    validation_path = os.path.join('..', 'data', grading_dir_name, subset_name)
+    validation_path = os.path.join('data', grading_dir_name, subset_name)
     file_names = sorted(glob.glob(os.path.join(validation_path, 'images', '*.jpeg')))
 
-    output_path = os.path.join('..', 'data', 'runs', subset_name + '_' + out_folder_suffix)
+    output_path = os.path.join('data', 'runs', subset_name + '_' + out_folder_suffix)
     make_dir_if_not_exist(output_path)
     image_shape = model.layers[0].output_shape[1]
 
