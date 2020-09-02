@@ -8,7 +8,7 @@ A deep neural network to identify and track a target (person) via a simulated Qu
 ### Project Details
  - [Network Architecture](#Network-Architecture)
  - [Project Setup](#Project-Setup)
- - [Dependencies](#Dependencies)
+ - [Run Simulation](#Run-Simulation)
 
 ## Network Architecture
 A full convolution network(FCN) is used to train the semantic segmentation model. It contains three encoder blocks, a 1x1 convolution layer, and three symmetrical decoder blocks.
@@ -38,13 +38,9 @@ With these hyper-parameter settings above, it took 6-7 hours to train the model 
 ### Dependencies
 - Uses the Udacity-RoboND Quadsim Simulator made with Unity, details of which can be found [here](https://github.com/udacity/RoboND-DeepLearning-Project/releases/tag/v1.2.2)
 - Python 3.5+ (Project uses Py3.5 keeping in mind the corresponding RoboND-QuadSim)
-- Some other dependencies
-```
-pip install transforms3d
-pip install PyQt5
-pip install pyqtgraph
-pip install tensorflow==1.2.1
-
+- Install other dependencies using ,
+```sh
+$ pip install -r requirements.txt
 ```
 
 ### Image data
@@ -52,4 +48,14 @@ The image data(Training Data, Validation Data, Sample Evaluation Data) can be fo
 
 ```sh
 $ git clone https://github.com/ashutoshtiwari13/Quadrocoptorsimulator-Deep-learning.git
+```
+
+## Run Simulation
+1. Details of the network implementation,training and precision is present in the jupyter-notebook ```drone_sim_dl.ipynb```.
+2. Save your trained model from the above training in the weights directory ( ```data/weights```).
+3. Launch the simulator , select "Spawn People" followed by "Follow Me" button.
+4. Run the following ,
+
+```sh
+$ python follower.py --pred_viz <your_trained_model>.h5
 ```
