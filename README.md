@@ -29,7 +29,25 @@ validation_steps = 50
 workers = 2
 
 ```
+With these hyper-parameter settings above, it took 6-7 hours to train the model on collab.
 
 ## Project Setup
 
-## Dependencies
+### Dependencies
+- Uses the Udacity-RoboND Quadsim Simulator made with Unity, details of which can be found ![here](https://github.com/udacity/RoboND-DeepLearning-Project/releases/tag/v1.2.2)
+- Python 3.5+ (Project uses Py3.5 keeping in mind the corresponding RoboND-QuadSim)
+- Some other dependencies
+```
+pip install transforms3d
+pip install PyQt5
+pip install pyqtgraph
+pip install tensorflow==1.2.1
+
+```
+
+### Image data
+The image data(Training Data, Validation Data, Sample Evaluation Data) can be found in the ```data``` directory in the cloned repository by ,
+
+```
+$ git clone https://github.com/ashutoshtiwari13/Quadrocoptorsimulator-Deep-learning.git
+```
