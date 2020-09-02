@@ -20,7 +20,7 @@ FCN's have earlier achieved state-of-the-art results in semantic segmentation ta
 
  Note : Though state-of-the-art models like **YOLO** and **SSD** perform extremely well at high frames per second but the generated bounded boxes can only provide partial seen understanding and so the need of **Semantic segmentation** in the project arises.
 
-### Hyperparamters
+### Hyperparameters
 
 ```
 learning_rate = 0.01
